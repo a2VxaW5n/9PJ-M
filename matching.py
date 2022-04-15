@@ -24,7 +24,7 @@ seed = int(time.time()) # 便利のため実行時の時間をseedとする
 print("SEED:",seed)
 chara = data.index.to_list()
 random.Random(seed).shuffle(chara) # ハンガリアンの被った場合は順番依存なので，順番をランダムシードでシャッフルする
-#print(chara)
+print("配属順:",chara)
 
 weapon = data.columns.to_list()
 
@@ -37,7 +37,7 @@ table = pd.DataFrame(index=weapon,columns=[str(seed)])
 for i in range(len(col_ind)):
     table[str(seed)][weapon[col_ind[i]]] = chara[i]
 
-#table.to_csv("result.txt",sep=":")
+table.to_csv("result.txt",sep=":")
 
 ## Print
 print("('*'は未回答者)")
