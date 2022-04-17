@@ -1,57 +1,58 @@
+# -*- coding: UTF-8 -*-
+
+'''
+        ∧　∧
+      （＾ω＾)
+     .(  O┬O
+  .≡.◎-ヽJ┴◎
+  
+'''
+
 import numpy as np
 from scipy.optimize import linear_sum_assignment
 import pandas as pd
 import random
 import time
-import hashlib
 
-file = "choises.csv"
-
-## Check if file is valid
-#with open(file,'rb') as fp:
-    #filedata = fp.read()
-#file_md5 = hashlib.md5(filedata).hexdigest()
-#print(file_md5)
-#if file_md5 != "416ea4af5301c689555607dfd30778d7":
-    #raise Exception("Invalid File")
+ጰ = "choises.csv"
 
 ## Main
-data = pd.read_csv(file,index_col=0)
+ጹ = pd.read_csv(ጰ,index_col=0)
 #print(data)
 
-seed = int(time.time()) # 便利のため実行時の時間をseedとする
-#seed = 114514 # 事後再現用
-print("SEED:",seed)
-chara = data.index.to_list()
-random.Random(seed).shuffle(chara) # ハンガリアンの被った場合は順番依存なので，順番をランダムシードでシャッフルする
-print("配属順:",chara)
+ጲ = int(time.time()) # 便利のため実行時の時間をseedとする
+#ጲ = 114514 # 事後再現用
+print("SEED:",ጲ)
+ጷ = ጹ.index.to_list()
+random.Random(ጲ).shuffle(ጷ) # ハンガリアンの被った場合は順番依存なので，順番をランダムシードでシャッフルする
+print("配属順:",ጷ)
 
-weapon = data.columns.to_list()
+ጵ = ጹ.columns.to_list()
 
-cost = []
-for name in chara:
-    cost.append(data.loc[name].values.tolist())
+ቋ = []
+for ዱ in ጷ:
+    ቋ.append(ጹ.loc[ዱ].values.tolist())
 
-row_ind, col_ind = linear_sum_assignment(cost,maximize=True)
-table = pd.DataFrame(index=weapon,columns=[str(seed)])
-for i in range(len(col_ind)):
-    table[str(seed)][weapon[col_ind[i]]] = chara[i]
+ቶ, ኆ = linear_sum_assignment(ቋ,maximize=True)
+ዷ = pd.DataFrame(index=ጵ,columns=[str(ጲ)])
+for ቴ in range(len(ኆ)):
+    ዷ[str(ጲ)][ጵ[ኆ[ቴ]]] = ጷ[ቴ]
 
-table.to_csv("result.txt",sep=":")
+ዷ.to_csv("ግ.txt",sep=":")
 
 ## Print
 print("('*'は未回答者)")
 print("======= 結果 =======")
-for wp in table.index:
-    print(f"{wp}: {table[str(seed)][wp]}")
+for ኄ in ዷ.index:
+    print(f"{ኄ}: {ዷ[str(ጲ)][ኄ]}")
 
 print("======= 効用 =======")
 print(f"=== 個別:")
-y = []
-for wp in table.index:
-    yv = data[wp][table[str(seed)][wp]]
-    y.append(yv)
-    print(f"    {table[str(seed)][wp]}: {yv}")
-print(f"=== 平均: {sum(y)/len(y):.2g}")
-print(f"=== 最大: {max(y)} (計{y.count(max(y))}人)")
-print(f"=== 最小: {min(y)} (計{y.count(min(y))}人)")
+ፎ = []
+for ሎ in ዷ.index:
+    ፌ = ጹ[ሎ][ዷ[str(ጲ)][ሎ]]
+    ፎ.append(ፌ)
+    print(f"    {ዷ[str(ጲ)][ሎ]}: {ፌ}")
+print(f"=== 平均: {sum(ፎ)/len(ፎ):.2g}")
+print(f"=== 最大: {max(ፎ)} (計{ፎ.count(max(ፎ))}人)")
+print(f"=== 最小: {min(ፎ)} (計{ፎ.count(min(ፎ))}人)")
