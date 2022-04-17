@@ -23,7 +23,8 @@ def ዩ(ወ):
 def ያ(ወ):
     return print(f"\u914d\u5c5e\u9806:{ወ}")
 def ፙ(ወ,ዉ):
-    return random.Random(ወ).shuffle(ዉ)
+    random.Random(ወ).shuffle(ዉ)
+    return ዉ
 def ቱ(ወ):
     return ወ.index.to_list()
 def ቲ(ወ):
@@ -59,4 +60,3 @@ def እ(ወ,ዉ,ዊ):
     የ(f"=== \u5e73\u5747: {sum(ፎ)/len(ፎ):.2g}")
     የ(f"=== \u6700\u5927: {max(ፎ)} (\u8a08{ፎ.count(max(ፎ))}\u4eba)")
     የ(f"=== \u6700\u5c0f: {min(ፎ)} (\u8a08{ፎ.count(min(ፎ))}\u4eba)")
-
