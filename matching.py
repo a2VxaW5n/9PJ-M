@@ -5,7 +5,7 @@
       （＾ω＾)
      .(  O┬O
   .≡.◎-ヽJ┴◎
-  
+
 '''
 
 import numpy as np
@@ -20,12 +20,12 @@ import time
 ጹ = pd.read_csv(ጰ,index_col=0)
 #print(data)
 
-ጲ = int(time.time()) # 便利のため実行時の時間をseedとする
-#ጲ = 114514 # 事後再現用
+ጲ = int(time.time())
+#ጲ = 114514 
 print("SEED:",ጲ)
 ጷ = ጹ.index.to_list()
-random.Random(ጲ).shuffle(ጷ) # ハンガリアンの被った場合は順番依存なので，順番をランダムシードでシャッフルする
-print("配属順:",ጷ)
+random.Random(ጲ).shuffle(ጷ)
+print("\u914d\u5c5e\u9806:",ጷ)
 
 ጵ = ጹ.columns.to_list()
 
@@ -41,18 +41,18 @@ for ቴ in range(len(ኆ)):
 ዷ.to_csv("ግ.txt",sep=":")
 
 ## Print
-print("('*'は未回答者)")
-print("======= 結果 =======")
+print("('*'\u306f\u672a\u56de\u7b54\u8005)")
+print("======= \u7d50\u679c =======")
 for ኄ in ዷ.index:
     print(f"{ኄ}: {ዷ[str(ጲ)][ኄ]}")
 
-print("======= 効用 =======")
-print(f"=== 個別:")
+print("======= \u52b9\u7528 =======")
+print(f"=== \u500b\u5225:")
 ፎ = []
 for ሎ in ዷ.index:
     ፌ = ጹ[ሎ][ዷ[str(ጲ)][ሎ]]
     ፎ.append(ፌ)
     print(f"    {ዷ[str(ጲ)][ሎ]}: {ፌ}")
-print(f"=== 平均: {sum(ፎ)/len(ፎ):.2g}")
-print(f"=== 最大: {max(ፎ)} (計{ፎ.count(max(ፎ))}人)")
-print(f"=== 最小: {min(ፎ)} (計{ፎ.count(min(ፎ))}人)")
+print(f"=== \u5e73\u5747: {sum(ፎ)/len(ፎ):.2g}")
+print(f"=== \u6700\u5927: {max(ፎ)} (\u8a08{ፎ.count(max(ፎ))}\u4eba)")
+print(f"=== \u6700\u5c0f: {min(ፎ)} (\u8a08{ፎ.count(min(ፎ))}\u4eba)")
