@@ -36,7 +36,7 @@ def ቆ(ወ,ዉ):
         ቋ.append(ዉ.loc[ዱ].values.tolist())
     return ቋ
 def ኋ(ወ):
-    return linear_sum_assignment(ወ,maximize=True)
+    return linear_sum_assignment(ወ,maximize=True)[1]
 def ቤ(ወ,ዉ,ዊ,ዋ):
     ዷ = pd.DataFrame(index=ወ,columns=[str(ዉ)])
     for ቴ in range(len(ዊ)):
